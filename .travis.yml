@@ -10,8 +10,6 @@ cache:
 matrix:
   include:
     - compiler: gcc
-      before_install:
-        - sudo update-alternatives --install /usr/bin/gcov gcov /usr/bin/gcov-5 50
       install:
         - gem install coveralls-lcov
       addons:
