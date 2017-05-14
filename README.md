@@ -5,11 +5,14 @@ Node is a project which implements node element for ArRaspi project, see https:/
 
 ## Build
 Go to build directory and execute below commands:
+
     ```
     cmake ../ .
     make
     ```
+    
 To run tests:
+
     ```
     make runTests
     ```
