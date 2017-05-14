@@ -28,8 +28,7 @@ addons:
     packages:
       - gcc-5
       - g++-5
-      - clang-3.8
-      - clang++-3.8
+      - clang
 
 script:
 - ( cd build && cmake ../ && make VERBOSE=yes && make runTests && cd .. )
