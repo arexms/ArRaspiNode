@@ -1,5 +1,6 @@
 # Ar Raspi Node
 
+[![Build Status](https://travis-ci.org/arexms/ArRaspiNode.svg?branch=master)](https://travis-ci.org/arexms/ArRaspiNode)
 ## Purpose
 Node is a project which implements node element for ArRaspi project, see https://github.com/arexms/ArRaspi
 
