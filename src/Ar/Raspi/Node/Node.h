@@ -9,5 +9,7 @@ namespace Ar { namespace Raspi { namespace Node
     {
     public:
         Node();
+
+        bool start(int x);
     };
 }}}

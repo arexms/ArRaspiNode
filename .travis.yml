@@ -10,18 +10,25 @@ cache:
 matrix:
   include:
     - compiler: gcc
+      before_install:
+        - sudo update-alternatives --install /usr/bin/gcov gcov /usr/bin/gcov-5 50
+      install:
+        - gem install coveralls-lcov
       addons:
         apt:
           sources:
             - ubuntu-toolchain-r-test
           packages:
             - g++-5
+            - lcov
       env:
         - COMPILER=g++-5
         - CXX=g++-5
         - CC=gcc-5
       before_script:
         - export CXX=g++-5
+      after_success:
+        - (cd build && bash generateAndSubmitCoverallsReport.sh && cd ..)
     - compiler: clang
       addons:
         apt:

@@ -12,4 +12,17 @@ namespace Ar { namespace Raspi { namespace Node
     {
         std::cout << "Node::Node()" << std::endl;
     }
+
+    bool Node::start(int x)
+    {
+        if(x == 0)
+        {
+            return false;
+        }
+
+        std::cout << "RUN";
+
+        return true;
+    }
+    
 }}}
