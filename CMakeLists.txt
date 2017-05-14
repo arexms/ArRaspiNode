@@ -15,6 +15,11 @@ if (CMAKE_CXX_COMPILER_ID MATCHES "GNU")
     add_definitions("-fprofile-arcs -ftest-coverage")
 endif()
 
+if (CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+    message(STATUS "Compile with -stdlib=libc++ (only with clang)")
+    add_definitions("-stdlib=libc++")
+endif()
+
 #-------------------------------------------------------------------------------
 #
 # ArRaspiNode
