@@ -1,0 +1,21 @@
+language: cpp
+compiler: gcc
+cache:
+  directories:
+  - $HOME/googletest
+
+before_install:
+  - sudo update-alternatives --install /usr/bin/gcov gcov /usr/bin/gcov-5 50
+
+
+addons:
+  apt:
+    sources:
+    - ubuntu-toolchain-r-test
+    packages:
+      - gcc-5
+      - g++-5
+
+script:
+- ( cd build && cmake ../ && make VERBOSE=yes && make runTests && cd .. )
+  
