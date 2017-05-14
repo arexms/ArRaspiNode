@@ -1,34 +1,31 @@
+sudo: required
+dist: precise
 language: cpp
-compiler:
-  - gcc
-  - clang
 
 cache:
   apt: true
   directories:
   - $HOME/googletest
 
-before_install:
-  - sudo update-alternatives --install /usr/bin/gcov gcov /usr/bin/gcov-5 50
-  - if [ ${CC} == "clang" ]; then
-      export CC=clang-3.8 CXX=clang++-3.8;
-      C=clang;
-    else
-      export CC=gcc-5 CXX=g++-5;
-      C=gcc;
-    fi
-
-install:
-  - if [ "$CXX" = "g++" ]; then export CXX="g++-5" CC="gcc-5"; fi
-
-addons:
-  apt:
-    sources:
-    - ubuntu-toolchain-r-test
-    packages:
-      - gcc-5
-      - g++-5
-      - clang
+matrix:
+  include:
+    - compiler: gcc
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+          packages:
+            - g++-5
+      env: COMPILER=g++-5
+    - compiler: clang
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+            - llvm-toolchain-precise-3.8
+          packages:
+            - clang-3.8
+      env: COMPILER=clang++-3.8
 
 script:
 - ( cd build && cmake ../ && make VERBOSE=yes && make runTests && cd .. )
